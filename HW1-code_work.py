@@ -41,9 +41,13 @@ for i in range (epochs):
 
 Y_pred = a*(X**3) + b*(X**2) + c*X + d
 plt.scatter(X, Y)
-plt.plot(X, Y_pred, color='red') # predicted
-plt.show()
+# Scatter plot of original data
+plt.scatter(X, Y, label='Original Data')
 
+# Plot of predicted values (for each point in X, compute its Y_pred and plot)
+plt.scatter(X, Y_pred, color='red', label='Prediction')
+
+plt.show()
 
 data_set2 = pd.read_csv("./data_two_variables.csv")
 
@@ -77,4 +81,15 @@ for i in range (epochs):
     
     if (i < 5):
         print(a, b, c)
+        
+        
 #test insert text        
+def L_prediction (a, b, c, X1, X2):
+    return a* X1 + b * X2 + c
+
+fig = plt.figure()
+ax = plt.axes(projection = "3d")
+Y_pred = L_prediction(a, b, c, X1, X2)
+ax.scatter3D(X1, X2, Y)
+ax.scatter3D(X1, X2, Y_pred, color="red", label="Prediction")
+plt.show()
